@@ -10,7 +10,7 @@ import AddProduct from "./pages/adminadd";
 import GetProducts from "./pages/adminget.jsx";
 import Updelproduct from "./pages/updelproduct.jsx";
 import NotFound from "./pages/not.jsx";
-import Cart from "./pages/CART.JSX";
+import Cart from "./pages/cart.jsx";
 import OrderSummary from "./pages/ordersummary.jsx";
 export default function App() {
   function Layout({ children }) {
