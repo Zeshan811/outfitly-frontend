@@ -56,7 +56,7 @@ export default function Home() {
                     </div>
 
                     {/* Right Image */}
-                    <div className="flex-1 flex justify-center md:justify-end">
+                    <div className="flex-1 flex justify-center md:hidden">
                         <img
                             src="/dom-hill-nimElTcTNyY-unsplash.jpg"
                             alt="Fashion Collection"
