@@ -1,8 +1,36 @@
 import {
     useEffect, useState
 } from "react";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import Header from "../component/header";
 export default function Cart() {
+
+    const navigate = useNavigate();
+    const [user, setUser] = useState("");
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            navigate("/");
+            return;
+        }
+
+        try {
+            const decoded = jwtDecode(token);
+
+            if (decoded.role !== "admin") {
+                setUser("user");
+                // alert("Welcome Admin");
+            }
+        } catch (e) {
+            // Invalid token
+            localStorage.removeItem("token");
+            alert(e);
+            navigate("/");
+        }
+    }, [navigate]);
     const [cart, setCart
     ] = useState([]);
     const [showOverlay, setShowOverlay
@@ -64,7 +92,10 @@ export default function Cart() {
 
     return (
         <>
-            <Header />
+            {
+                user === "user" && < Header />
+
+            }
             <div className=" max-h[600px] flex flex-col items-center mt-10">
 
                 { /* CART TABLE */}

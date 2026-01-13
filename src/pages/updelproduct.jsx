@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AdminHeader from "../component/adminheader";
+import { jwtDecode } from "jwt-decode";
 export default function Updelproduct() {
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/");
+            return;
+        }
+
+        const decoded = jwtDecode(token);
+        if (decoded.role !== "admin") {
+            alert("Access denied");
+            navigate("/home");
+        }
+    }, [navigate]);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -71,7 +86,7 @@ export default function Updelproduct() {
                 <input name="name" value={product.name} onChange={handleChange} className="w-full p-2 mb-2 text-black" />
                 <input name="price" value={product.price} onChange={handleChange} className="w-full p-2 mb-2 text-black" />
                 <input name="quantity" value={product.quantity} onChange={handleChange} className="w-full p-2 mb-2 text-black" />
-              
+
                 <select name="category" value={product.category} onChange={handleChange} className="w-full p-2 mb-4 text-black">
                     <option value="hoodie">Hoodie</option>
                     <option value="jacket">Jacket</option>

@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { ShoppingCart, Search, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 export default function Shop() {
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const addToCart = async (productId) => {
         const token = localStorage.getItem("token");
         if (!token) {
             alert("Please login to add items to cart");
+            return;
+        }
+        const decoded = jwtDecode(token);
+        if (decoded.role === "admin") {
+            navigate("/");
             return;
         }
         try {
