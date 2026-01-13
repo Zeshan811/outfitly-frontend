@@ -56,14 +56,13 @@ export default function Home() {
                     </div>
 
                     {/* Right Image */}
-                    <div className="flex-1 relative w-full h-[400px] md:h-[500px]">
+                    <div className="flex-1 flex justify-center md:justify-end">
                         <img
                             src="/dom-hill-nimElTcTNyY-unsplash.jpg"
                             alt="Fashion Collection"
-                            className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                            className="w-full md:w-[400px] h-auto object-cover rounded-lg max-h-[330px]"
                         />
                     </div>
-
 
                     {/* Buttons */}
                     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4 md:absolute md:bottom-4 md:left-6">
