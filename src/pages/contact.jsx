@@ -59,29 +59,38 @@ export default function Contact() {
                 <img
                     src="/burgess-milner-OYYE4g-I5ZQ-unsplash (1).jpg"
                     alt="Error Loading.."
-                    className="w-full h-[600px] object-cover mb-6"
+                    className="w-full h-64 md:h-[600px] object-cover mb-6"
                 />
-                <h1 className="text-3xl font-bold text-[#36594E] mb-4">Contact Us</h1>
+                <h1 className="text-3xl font-bold text-[#36594E] mb-4 text-center">Contact Us</h1>
                 <p className="text-gray-600 text-center max-w-md mb-6">
                     Have questions or feedback? Reach out to us anytime at{" "}
                     <span className="text-[#36594E] font-semibold">support@outfitly.com</span>.
                 </p>
-                <div className="flex flex-row w-full max-w-4xl px-4  ">
-                    <div className="flex-1 pr-10">
-                        <p className="mb-20">
-                            <span className="inline-block mr-2" role="img" aria-label="location">📍</span> Shop P234, First Floor,<br /><span>Main Emporium Mall, Lahore</span>
+
+                {/* Main Flex */}
+                <div className="flex flex-col md:flex-row w-full max-w-4xl px-4 md:px-0">
+                    {/* Address Section */}
+                    <div className="flex-1 md:pr-10 mb-6 md:mb-0 text-center md:text-left">
+                        <p className="mb-6">
+                            <span className="inline-block mr-2">📍</span>
+                            Shop P234, First Floor,<br />
+                            <span>Main Emporium Mall, Lahore</span>
                         </p>
-                        <p className="mb-20">
-                            <span className="inline-block mr-2" role="img" aria-label="phone">📞</span> +923121706344<br />   <span className="ml-10"> 0476331333
-                            </span>
+                        <p className="mb-6">
+                            <span className="inline-block mr-2">📞</span>
+                            +923121706344<br />
+                            <span className="ml-10">0476331333</span>
                         </p>
-                        <p className="mb-20">
-                            <span className="inline-block mr-2" role="img" aria-label="email">📧</span> Outfitly.fashion.store@gmail.com
+                        <p className="mb-6">
+                            <span className="inline-block mr-2">📧</span>
+                            Outfitly.fashion.store@gmail.com
                         </p>
                     </div>
-                    <div className="flex-1 bg-gray-200 p-6 rounded-lg mb-10 ml-20">
-                        <h2 className="text-xl font-semibold mb-4">Send Message</h2>
-                        <form onSubmit={handleSubmit} className="space-y-4 " >
+
+                    {/* Form Section */}
+                    <div className="flex-1 bg-gray-200 p-4 md:p-6 rounded-lg">
+                        <h2 className="text-xl font-semibold mb-4 text-center md:text-left">Send Message</h2>
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Name:</label>
                                 <input
@@ -111,14 +120,19 @@ export default function Contact() {
                                     className="mt-1 block w-full p-2 border rounded-md h-32"
                                 />
                             </div>
-                            <button type="submit" className="w-full py-2 px-4 bg-[#36594E] text-white rounded-md hover:bg-[#2e4d43] " onClick={() => alert("Message sent! We will Respond you soon")}>
+                            <button
+                                type="submit"
+                                className="w-full py-2 px-4 bg-[#36594E] text-white rounded-md hover:bg-[#2e4d43]"
+                                onClick={() => alert("Message sent! We will respond soon")}
+                            >
                                 Send Message
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-        </>
 
+
+        </>
     );
 }

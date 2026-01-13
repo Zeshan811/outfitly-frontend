@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { ShoppingCart, Search, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import Header from "../component/header";
 import { jwtDecode } from "jwt-decode";
 import { API_BASE_URL } from "./apiurl";
 import { useNavigate } from "react-router-dom";
@@ -84,40 +83,7 @@ export default function Shop() {
     return (
         <>
             {/* HEADER */}
-
-            <header className="bg-[#36594E] text-white shadow-md">
-                <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-
-                    { /* Left - Logo */}
-                    <Link to="/shop" className="text-2xl font-semibold flex items-center gap-2">
-                        <ShoppingCart className="w-6 h-6" />
-                        <span>Outfitly</span>
-                    </Link>
-
-                    { /* Center - Navigation Links */}
-                    <nav>
-                        <div className="flex-1 flex justify-center w-[300px]">
-                            <div className="relative w-full max-w-md">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-4 text-gray-400" />
-                                <input
-                                    type="search"
-                                    placeholder="Find your favourite"
-                                    className="w-full pl-10 pr-4 py-2 rounded-full text-sm text-black outline-none focus:ring-2 focus:ring-[#4FA095]"
-                                />
-                            </div>
-                        </div>
-                    </nav>
-                    { /* Right - Icons */}
-                    <div className="flex items-center space-x-4">
-                        {<ul className="hidden md:flex space-x-8 text-sm font-medium">
-                            <li><Link to="/home" className="hover:text-gray-200 transition">Home</Link></li>
-                        </ul>}
-                        <Link to="/profile" className="hover:text-gray-200 transition">
-                            <User className="w-5 h-5 cursor-pointer hover:scale-110 transition" />
-                        </Link>
-                    </div>
-                </div>
-            </header >
+            <Header />
             <div className="mt-5 text-center">
                 <h1 className="text-3xl font-bold text-[#36594E] mb-4">Shop Our Collection</h1>
                 <p className="text-gray-600 text-lg ">Browse the latest arrivals of women’s outerwear — cozy hoodies, elegant coats, and trendy jackets.</p>
