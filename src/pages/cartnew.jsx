@@ -25,6 +25,9 @@ export default function Cart() {
                 setUser("user");
                 // alert("Welcome Admin");
             }
+            else {
+                navigate("/home")
+            }
         } catch (e) {
             // Invalid token
             localStorage.removeItem("token");

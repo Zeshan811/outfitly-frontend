@@ -16,7 +16,7 @@ export default function Shop() {
         }
         const decoded = jwtDecode(token);
         if (decoded.role === "admin") {
-            navigate("/");
+            navigate("/home");
             return;
         }
         try {
