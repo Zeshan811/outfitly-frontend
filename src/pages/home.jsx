@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import AdminHeader from "../component/adminheader";
 const products = [
-    { title: "Belted Jacket", price: "3000", img: "/public/ali-ahmadi-rihy34eSbvw-unsplash.jpg" },
-    { title: "Brown Leather Jacket", price: "4000", img: "/public/ali-karimiboroujeni-zzKT12IXGfA-unsplash.jpg" },
-    { title: "Classic Coat", price: "3500", img: "/public/senya-zhukavin-_pxu5HDcoj4-unsplash.jpg" },
-    { title: "Winter Jacket", price: "4000", img: "/public/mahdi-chaghari-EiVMVbT31xU-unsplash.jpg" },
-    { title: "Plain Blue", price: "1800", img: "/public/rydale-clothing-frrvujD6QwA-unsplash.jpg" },
-    { title: "Plain Pink", price: "1600", img: "/public/venti-views-_gfxywoO_js-unsplash.jpg" },
+    { title: "Belted Jacket", price: "3000", img: "/ali-ahmadi-rihy34eSbvw-unsplash.jpg" },
+    { title: "Brown Leather Jacket", price: "4000", img: "/ali-karimiboroujeni-zzKT12IXGfA-unsplash.jpg" },
+    { title: "Classic Coat", price: "3500", img: "/senya-zhukavin-_pxu5HDcoj4-unsplash.jpg" },
+    { title: "Winter Jacket", price: "4000", img: "/mahdi-chaghari-EiVMVbT31xU-unsplash.jpg" },
+    { title: "Plain Blue", price: "1800", img: "/rydale-clothing-frrvujD6QwA-unsplash.jpg" },
+    { title: "Plain Pink", price: "1600", img: "/venti-views-_gfxywoO_js-unsplash.jpg" },
 ];
 
 export default function Home() {
@@ -128,14 +128,14 @@ export default function Home() {
                     <div className="relative flex justify-betweem items-center">
                         {/* Image 1 */}
                         <img
-                            src="/public/main2.jpeg"
+                            src="/main2.jpeg"
                             alt="Model 1"
                             className="w-[420px] h-auto object-cover "
                         />
 
                         {/* Image 2 */}
                         <img
-                            src="/public/main.jpg"
+                            src="/main.jpg"
                             alt="Model 2"
                             className="w-[230px] h-[230px] object-cover absolute top-[-40px] right-[-20px]"
                         />
