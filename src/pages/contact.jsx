@@ -111,7 +111,7 @@ export default function Contact() {
                                     className="mt-1 block w-full p-2 border rounded-md h-32"
                                 />
                             </div>
-                            <button type="submit" className="w-full py-2 px-4 bg-[#36594E] text-white rounded-md hover:bg-[#2e4d43] ">
+                            <button type="submit" className="w-full py-2 px-4 bg-[#36594E] text-white rounded-md hover:bg-[#2e4d43] " onClick={() => alert("Message sent! We will Respond you soon")}>
                                 Send Message
                             </button>
                         </form>

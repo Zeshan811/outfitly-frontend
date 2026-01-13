@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ShoppingCart, Search, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { API_BASE_URL } from "./apiurl";
 import { useNavigate } from "react-router-dom";
 export default function Shop() {
     const [categories, setCategories] = useState([]);
@@ -19,7 +20,7 @@ export default function Shop() {
             return;
         }
         try {
-            const res = await fetch("http://127.0.0.1:5000/cart/add", {
+            const res = await fetch(`${API_BASE_URL}/cart/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

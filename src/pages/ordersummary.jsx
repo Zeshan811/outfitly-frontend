@@ -3,7 +3,7 @@ import Header from "../component/header";
 import AdminHeader from "../component/adminheader";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from "./apiurl";
 export default function OrderSummary() {
     const [orders, setOrders] = useState([]);
     const [role, setRole] = useState("user");
@@ -31,7 +31,7 @@ export default function OrderSummary() {
     // Fetch orders from backend
     const fetchOrders = async () => {
         try {
-            const res = await fetch("http://127.0.0.1:5000/orders", {
+            const res = await fetch(`${API_BASE_URL}/orders`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const data = await res.json();
@@ -53,7 +53,7 @@ export default function OrderSummary() {
     // Update order status (admin only)
     const updateStatus = async (orderId, newStatus) => {
         try {
-            const res = await fetch("http://127.0.0.1:5000/orders/update-status", {
+            const res = await fetch(`${API_BASE_URL}/orders/update-status`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

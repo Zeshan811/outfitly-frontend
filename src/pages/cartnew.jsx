@@ -4,6 +4,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Header from "../component/header";
+import { API_BASE_URL } from "./apiurl";
 export default function Cart() {
 
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ export default function Cart() {
     const token = localStorage.getItem("token");
 
     const fetchCart = async () => {
-        const res = await fetch("http://127.0.0.1:5000/cart",
+        const res = await fetch(`${API_BASE_URL}/cart`,
             {
                 headers: {
                     Authorization: `Bearer ${token
@@ -57,7 +58,7 @@ export default function Cart() {
     const updateQty = async (cart_id, qty) => {
         if (qty < 1) return;
 
-        await fetch("http://127.0.0.1:5000/cart/update",
+        await fetch(`${API_BASE_URL}/cart/update`,
             {
                 method: "PUT",
                 headers: {
@@ -74,7 +75,7 @@ export default function Cart() {
     };
 
     const removeItem = async (cart_id) => {
-        await fetch(`http: //127.0.0.1:5000/cart/remove/${cart_id}`, {
+        await fetch(`${API_BASE_URL}/cart/remove/${cart_id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token
@@ -97,7 +98,6 @@ export default function Cart() {
 
             }
             <div className=" max-h[600px] flex flex-col items-center mt-10">
-
                 { /* CART TABLE */}
                 <table className="w-[800px] text-black border-collapse">
                     <thead className="bg-[#2C4A40] sticky top-0">
@@ -207,7 +207,7 @@ export default function Cart() {
                                 <button
                                     className="px-4 py-2 bg-green-600 text-white rounded"
                                     onClick={async () => {
-                                        const re = await fetch("http://127.0.0.1:5000/order/place",
+                                        const re = await fetch(`${API_BASE_URL}/order/place`,
                                             {
                                                 method: "POST",
                                                 headers: {

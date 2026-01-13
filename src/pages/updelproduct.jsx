@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AdminHeader from "../component/adminheader";
 import { jwtDecode } from "jwt-decode";
+import { API_BASE_URL } from "./apiurl";
 export default function Updelproduct() {
-
+    const { id } = useParams();
+    const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
@@ -18,14 +20,11 @@ export default function Updelproduct() {
         }
     }, [navigate]);
 
-    const { id } = useParams();
-    const navigate = useNavigate();
-
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000/products/${id}`, {
+        fetch(`${API_BASE_URL}/products/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
@@ -44,7 +43,7 @@ export default function Updelproduct() {
     };
 
     const handleUpdate = async () => {
-        const res = await fetch(`http://127.0.0.1:5000/products/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/products/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -60,7 +59,7 @@ export default function Updelproduct() {
     const handleDelete = async () => {
         if (!window.confirm("Delete this product?")) return;
 
-        const res = await fetch(`http://127.0.0.1:5000/products/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/products/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`

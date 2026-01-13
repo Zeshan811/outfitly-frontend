@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../component/header";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./apiurl";
+
 const products = [
     { title: "Belted Jacket", price: "$499.9", img: "/public/ali-ahmadi-rihy34eSbvw-unsplash.jpg" },
     { title: "Brown Leather Jacket", price: "$199.9", img: "/public/ali-karimiboroujeni-zzKT12IXGfA-unsplash.jpg" },
@@ -55,7 +57,7 @@ export default function Home() {
         }
 
         try {
-            const res = await fetch("http://127.0.0.1:5000/forgot-password", {
+            const res = await fetch(`${API_BASE_URL}/forgot-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(forgotData)

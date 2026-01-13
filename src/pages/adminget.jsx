@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import AdminHeader from "../component/adminheader";
-
+import { API_BASE_URL } from "./apiurl";
 export default function GetProducts() {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
@@ -29,7 +29,7 @@ export default function GetProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch("http://127.0.0.1:5000/products", {
+                const res = await fetch(`${API_BASE_URL}/products`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

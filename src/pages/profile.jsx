@@ -75,7 +75,7 @@ import { useNavigate } from "react-router-dom";
 import AdminHeader from "../component/adminheader";
 import Header from "../component/header";
 import { jwtDecode } from "jwt-decode";
-
+import { API_BASE_URL } from "./apiurl";
 export default function Profile() {
     const navigate = useNavigate();
     const [role, setRole] = useState("user");
@@ -94,7 +94,7 @@ export default function Profile() {
             const decoded = jwtDecode(token);
             setRole(decoded.role);
 
-            fetch("http://127.0.0.1:5000/profile", {
+            fetch(`${API_BASE_URL}/profile`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

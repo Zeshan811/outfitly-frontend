@@ -3,6 +3,7 @@ import AdminHeader from "../component/adminheader";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { supabase } from "../supabase";
+import { API_BASE_URL } from "./apiurl";
 export default function AddProduct() {
     const navigate = useNavigate();
     const [product, setProduct] = useState({
@@ -55,7 +56,7 @@ export default function AddProduct() {
             const imageUrl = await uploadImage(product.image);
 
             // 2️⃣ Send product data to backend
-            const res = await fetch("http://127.0.0.1:5000/products", {
+            const res = await fetch(`${API_BASE_URL}/products`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
