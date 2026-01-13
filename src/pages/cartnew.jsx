@@ -254,8 +254,7 @@
 
 <div className="flex flex-col items-center mt-10 w-full px-4 md:px-0">
     {/* Make table horizontally scrollable on small screens */}
-    {/* Center table on large screens and scroll on small screens */}
-    <div className="w-full flex justify-center overflow-x-auto">
+    <div className="overflow-x-auto w-full">
         <table className="min-w-[600px] md:min-w-[800px] text-black border-collapse">
             <thead className="bg-[#2C4A40] sticky top-0">
                 <tr>
@@ -324,7 +323,6 @@
     >
         Place Order
     </button>
-
 
     {/* Order Overlay */}
     {showOverlay && (
