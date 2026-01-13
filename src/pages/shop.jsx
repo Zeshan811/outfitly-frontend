@@ -49,13 +49,13 @@ export default function Shop() {
 
         const fetchData = async () => {
             try {
-                const catRes = await fetch("http://127.0.0.1:5000/categories");
+                const catRes = await fetch(`${API_BASE_URL}/categories`);
                 const cats = await catRes.json();
 
                 const categoriesWithProducts = await Promise.all(
                     cats.map(async (cat) => {
                         const prodRes = await fetch(
-                            `http://127.0.0.1:5000/productspage?category_id=${cat.id}`
+                            `${API_BASE_URL}/productspage?category_id=${cat.id}`
                         );
                         const products = await prodRes.json();
 

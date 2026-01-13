@@ -127,7 +127,7 @@ export default function Home() {
 
         // Only now hit backend
         try {
-            const res = await fetch("https://127.0.0.1:5000/signup", {
+            const res = await fetch(`${API_BASE_URL}/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(signupData)
@@ -148,7 +148,7 @@ export default function Home() {
     };
     const handleLogin = async () => {
         try {
-            const res = await fetch("http://127.0.0.1:5000/login", {
+            const res = await fetch(`${API_BASE_URL}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(loginData)
