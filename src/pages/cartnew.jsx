@@ -101,8 +101,8 @@ export default function Cart() {
 
             }
             <div className="flex flex-col items-center mt-10 w-full px-4 md:px-0">
-                {/* Make table horizontally scrollable on small screens */}
-                <div className="overflow-x-auto w-full">
+                {/* Center table on large screens and scroll on small screens */}
+                <div className="w-full flex justify-center overflow-x-auto">
                     <table className="min-w-[600px] md:min-w-[800px] text-black border-collapse">
                         <thead className="bg-[#2C4A40] sticky top-0">
                             <tr>
@@ -171,51 +171,6 @@ export default function Cart() {
                 >
                     Place Order
                 </button>
-
-                {/* Order Overlay */}
-                {showOverlay && (
-                    <div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4">
-                        <div className="bg-white text-black rounded-2xl p-6 w-full max-w-[400px]">
-                            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
-
-                            <p>Subtotal: Rs {subtotal}</p>
-                            <p>Delivery Charges: Rs {delivery}</p>
-                            <p className="font-bold mt-2">Total: Rs {total}</p>
-                            <p className="mt-2 text-sm">
-                                Payment Method: <b>Cash on Delivery</b>
-                            </p>
-
-                            <div className="flex flex-col md:flex-row justify-between mt-6 gap-4">
-                                <button
-                                    className="px-4 py-2 bg-gray-400 rounded w-full md:w-auto"
-                                    onClick={() => setShowOverlay(false)}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    className="px-4 py-2 bg-green-600 text-white rounded w-full md:w-auto"
-                                    onClick={async () => {
-                                        const re = await fetch(`${API_BASE_URL}/order/place`, {
-                                            method: "POST",
-                                            headers: {
-                                                Authorization: `Bearer ${token}`,
-                                            },
-                                        });
-                                        const da = await re.json();
-                                        alert(
-                                            `✅ Order Placed Successfully!\nOrder ID: ${da.order_id}\nSubtotal: Rs ${da.subtotal}\nDelivery Charges: Rs ${da.delivery_charges}\nTotal: Rs ${da.total_amount}\nPayment: ${da.payment_method}`
-                                        );
-
-                                        setShowOverlay(false);
-                                        fetchCart();
-                                    }}
-                                >
-                                    Confirm Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
 
         </>
