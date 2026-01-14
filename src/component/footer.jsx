@@ -57,7 +57,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <p className="text-center font-bold text-sm mt-4 md:mt-0">
-                    Copywrites: All right reserved
+                    © {new Date().getFullYear()} Zeshan Vohra. All rights reserved.
                 </p>
             </div>
         </footer>

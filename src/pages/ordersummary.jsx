@@ -100,11 +100,18 @@ export default function OrderSummary() {
                         <table className="min-w-[640px] lg:min-w-full mx-auto border-collapse border border-gray-200 shadow-md rounded-lg overflow-hidden mb-40">
                             <thead className="bg-[#36594E]/90">
                                 <tr>
-                                    <th className="px-4 py-3 text-left text-white font-medium">User</th>
-                                    <th className="px-4 py-3 text-left text-white font-medium">Items</th>
-                                    <th className="px-4 py-3 text-left text-white font-medium">Total (Rs)</th>
-                                    <th className="px-4 py-3 text-left text-white font-medium">Status</th>
-                                    <th className="px-4 py-3 text-left text-white font-medium">Created At</th>
+                                    <th className="px-4 py-3 text-left text-white font-medium">
+                                        User
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-white font-medium">
+                                        Items
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-white font-medium">
+                                        Total (Rs)
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-white font-medium">
+                                        Status
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -122,16 +129,27 @@ export default function OrderSummary() {
                                                 </div>
                                             ))}
                                         </td>
-                                        <td className="px-4 py-3 font-semibold">
-                                            {order.total_amount}
-                                        </td>
+                                        <td className="px-4 py-3 font-semibold">{order.total_amount}</td>
                                         <td className="px-4 py-3">
-                                            <span className="px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">
-                                                {order.status}
-                                            </span>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            {new Date(order.created_at).toLocaleString()}
+                                            {role === "admin" ? (
+                                                <select
+                                                    value={order.status}
+                                                    onChange={(e) => updateStatus(order.id, e.target.value)}
+                                                    className={`px-3 py-1 rounded-full border focus:outline-none ${statusColors[order.status]}`}
+                                                >
+                                                    {statuses.map((status) => (
+                                                        <option key={status} value={status}>
+                                                            {status.charAt(0).toUpperCase() + status.slice(1)}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            ) : (
+                                                <span
+                                                    className={`px-3 py-1 rounded-full ${statusColors[order.status]}`}
+                                                >
+                                                    {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                                                </span>
+                                            )}
                                         </td>
                                     </tr>
                                 ))}
@@ -139,11 +157,7 @@ export default function OrderSummary() {
                         </table>
                     </div>
                 </div>
-
             )}
-
         </>
     );
 }
-
-
